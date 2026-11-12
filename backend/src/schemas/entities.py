@@ -1,5 +1,6 @@
 from pydantic import BaseModel,Field,ConfigDict
 from typing import Literal
+from src.constants.domain import MAX_GAP
 class StrictModel(BaseModel):
  model_config=ConfigDict(allow_inf_nan=False)
 class LoginInput(StrictModel):
@@ -24,6 +25,7 @@ class SequenceStudyInput(StrictModel):
  min_support:float=Field(default=.1,gt=0,le=1)
  max_length:int=Field(default=3,ge=1,le=4)
  collapse_repeats:bool=True
+ max_gap:int|None=Field(default=None,ge=0,le=MAX_GAP)
 class RunInput(StrictModel):
  study_id:str
 class ReviewInput(StrictModel):

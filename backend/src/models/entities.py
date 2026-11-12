@@ -22,6 +22,7 @@ class SequenceStudy:
  min_support:float=.1
  max_length:int=3
  collapse_repeats:bool=True
+ max_gap:int|None=None
  created_at:str=''
 @dataclass
 class SequenceRun:
